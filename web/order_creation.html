@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html data-theme="dark">
+    <head>
+		<meta charset="utf-8">
+        <meta name="title" content="{{.MetaTitle}}">
+		<meta name="description" content="{{.MetaDescription}}">
+		<meta name="keywords" content="{{.Keywords}}">
+		<meta name="robots" content="{{if .MetaIndex}}index{{else}}noindex{{end}},{{if .MetaFollow}}follow{{else}}nofollow{{end}}">
+		<title>{{.Title}}</title>
+		<meta http-equiv="refresh" content="3600">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link href="/static/site/css/todo.min.css" rel="stylesheet"> -->
+		<!-- <link href="/static/site/json/manifest.json" rel="manifest"> -->
+        <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+        <!-- Push footer to bottom -->
+        <style>
+            html, body { height: 100%; }
+            body { display: flex; flex-direction: column; }
+            .spacer { flex: 1 0 auto; }
+            .footer { flex-shrink: 0; }
+        </style>
+    </head>
+    <body>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <p class="title is-1">Order Creation</p>
+                <p class="subtitle is-3">27th Logistics Corps</p>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                    <div id="new-order-div">
+                        <ws-controller ws-url="/order/conn"></ws-controller>
+                        <new-order-form></new-order-form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="spacer"> <!-- Push footer to bottom --> </div>
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p><strong>Order Tracker Demo</strong> by Koval of the 27th.</p>
+            </div>
+        </footer>
+        <script type="importmap">
+            {
+                "imports": {
+                    "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+                }
+            }
+        </script>
+        <script type="module" src="/js/order_creation.js" defer></script>
+    </body>
+</html>
